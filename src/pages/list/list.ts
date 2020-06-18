@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CursoService } from '../../services/domain/curso.service';
+import { CursoDTO } from '../../models/curso.dto';
 
 @Component({
   selector: 'page-list',
@@ -8,30 +10,40 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: CursoDTO[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public cursoService: CursoService) {
     this.selectedItem = navParams.get('item');
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+  ionViewWillEnter() {   
+    this.carregarTodosCursos();
+  }
+
+  carregarTodosCursos() {
+    console.log('CARREGANDO TODOS OS CURSOS ...');
+    this.cursoService.findAll()
+    .subscribe(response => {
+      console.log('CHEGOU A RESPOSTA COM SUCESSO!');
+      console.log(response);
+      this.items = response;
+    },
+    error => {
+      console.log('CHEGOU A RESPOSTA COM ERRO!');
+      console.log(error);
     });
   }
+
+  adicionarCurso() {
+    this.navCtrl.push('NovoCursoPage');
+  }
+
+  visualizarCurso(curso : CursoDTO) {
+    this.navCtrl.push('CursoDetailsPage', {curso : curso});
+  }
+
 }

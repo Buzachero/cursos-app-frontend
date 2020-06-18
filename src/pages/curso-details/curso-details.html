@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalhes do Curso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        {{item?.descricao}}
+      </ion-card-title>
+      <p>
+        Data de início: {{item?.dataInicio}}
+      </p>
+      <p>
+        Data encerramento: {{item?.dataTermino}}
+      </p>
+      <p>
+        Quantidade de Alunos: {{item?.quantidadeAlunos}}
+      </p>
+      <p>
+        Categoria: {{item?.categoria}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button block outline (click)="excluirCurso(item.id)">Excluir</button>
+</ion-content>
