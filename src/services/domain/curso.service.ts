@@ -14,7 +14,7 @@ export class CursoService {
         return this.http.get<CursoDTO[]>(`${API_CONFIG.baseUrl}/cursos/`);
     }
 
-    salvarCurso(novoCurso: CursoDTO) {
+    salvarCurso(novoCurso: CursoDTO) {        
         return this.http.post(
             `${API_CONFIG.baseUrl}/cursos/`,
             novoCurso,

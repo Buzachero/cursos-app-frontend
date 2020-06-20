@@ -26,8 +26,10 @@
       <ion-input formControlName="quantidadeAlunos" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Categoria*</ion-label>
-      <ion-input formControlName="categoria" type="text"></ion-input>
+      <ion-label stacked>Categoria*</ion-label>      
+      <ion-select formControlName="categoria">
+        <ion-option *ngFor="let categoria of categorias" [value]="categoria">{{categoria.descricao}}</ion-option>
+      </ion-select>
     </ion-item>    
     <button ion-button block type="submit" [disabled]="formGroup.invalid">Adicionar Curso</button>
   </form>
