@@ -47,7 +47,9 @@ export class NovoCursoPage {
       .subscribe(response => {
         this.showOK();
       },
-      error => {});
+      error => {
+        console.log(error);
+      });
   }
 
   showOK() {

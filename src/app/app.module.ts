@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CursoService } from '../services/domain/curso.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CursoService } from '../services/domain/curso.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CursoService
+    CursoService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule {}
