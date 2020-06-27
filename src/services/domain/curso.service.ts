@@ -27,7 +27,7 @@ export class CursoService {
 
     excluirCurso(curso_id: string) {
         return this.http.delete(
-            `${API_CONFIG.baseUrl}/cursos/id/${curso_id}`
+            `${API_CONFIG.baseUrl}/cursos/${curso_id}`
         );
     }
 }

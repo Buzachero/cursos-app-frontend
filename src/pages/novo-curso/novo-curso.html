@@ -14,11 +14,13 @@
     <ion-item>
       <ion-label stacked>Data Inicio*</ion-label>
       <ion-input formControlName="dataInicio" type="text"></ion-input>
+      <!--ion-datetime placeholder="Escolha uma data" displayFormat="DD/MM/YYYY" cancelText="Cancelar" doneText="OK" min="2020-06-21" max="2022-12-31"formControlName="dataInicio"></ion-datetime-->
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.dataInicio.dirty && formGroup.controls.dataInicio.errors" margin-left>Valor inválido</p>
     <ion-item>
       <ion-label stacked>Data Final*</ion-label>
       <ion-input formControlName="dataTermino" type="text"></ion-input>
+      <!--ion-datetime placeholder="Escolha uma data" displayFormat="DD/MM/YYYY" cancelText="Cancelar" doneText="OK" min="2020-06-21" max="2022-12-31"formControlName="dataTermino"></ion-datetime-->
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.dataTermino.dirty && formGroup.controls.dataTermino.errors" margin-left>Valor inválido</p>
     <ion-item>
